@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+author: Adrianna Przybylska, 115023
+output: html_notebook
+---
+
+Poniżej przedstawiam rozwiązanie do zadania domowego nr. 1.
+Zad. 1
+```{r}
+v1 <- seq(from = 1, to = 20, by = 1)
+v1
+v2 <- seq(from = 20, to = 1)
+v2
+v3 <- c(v1,seq(19,1))
+v3
+tmp <- c(7,8,1)
+tmp
+v4 <- rep(c(4,6,3), 10)
+v4
+#tu jest na zmiane
+v5 <- c(rep(c(4,6,3), times = 9),c(4,6,4))
+v5
+#tu jest po kolei, bo nie jestem pewna czy dobrze to zrozumialam
+v5_1 <- c(rep(c(4,6,3), c(11,10,9)))
+v5_1
+v6 <- exp(seq(from = 3.0, to = 6.0, by = 0.1))* cos(seq(from = 3.0, to = 6.0, by = 0.1))
+v6
+v7 <- (2^c(1:25))/c(1:25)
+v7
+
+v8 <- seq(from = 10, to = 100, by = 10)^3+ 4*seq(from = 10, to = 100, by = 10)^2
+v8
+v8_suma <- sum(v8)
+v8_suma
+v9 <- c(((2^c(1:25))/c(1:25))/((3^c(1:25))/c(1:25)^2))
+v9
+v9_suma = sum(v9)
+v9_suma
+```
+Zad. 2
+```{r}
+set.seed(123)
+x1 <- sample(c(0,1), 1000, replace = TRUE)
+x1
+x2 <- sample(c('No', 'Yes'), 1000, replace = TRUE)
+x2
+x3_q <- rep('q', 3)
+x3_liczby <- c(rep(c(1,2,3,4,5), c(3,3,3,3,3)))
+paste_1 <- paste(x3_q, x3_liczby, sep = '')
+x3_s <- paste('s', seq(from=1, to=3, by=1), sep='')
+x3 <- paste(paste_1, x3_s, sep='')
+x3
+```
+Zad.3
+```{r}
+A <- matrix(c(3,1,-2,-3,2,1,-2,6,3), nrow = 3, ncol = 3, byrow = TRUE)
+A
+B <- matrix (c(1,2,-2,0,2,-1), nrow = 2, ncol = 3, byrow = TRUE)
+B
+C <- matrix(c(1:4), nrow = 2, ncol = 2, byrow = TRUE)
+C
+```
+

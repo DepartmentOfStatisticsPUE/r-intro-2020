@@ -1,0 +1,58 @@
+
+```{r}
+#numeric vectors
+v1 <-as.numeric(1:20)
+
+v2 <- as.numeric(20:1)
+
+v3 <- c(v1,v2)[-20]
+
+`*tmp*` <- c(7,8,1)
+
+v5 <- rep(c(4,6,3),times=10)
+
+v6 <- c(v5[-3], 4)
+
+  x <- seq(3,6,0.1)
+v7 <- exp(1)^(x)*cos(x)
+
+  u <- as.numeric(1:25)
+v8 <- ((2^u)/u)
+
+  i <- as.numeric(10:100)
+v9 <- sum(i^3+4*i^2)
+
+  j <- as.numeric(1:25)
+v10 <- sum((2^j)/j +(3^j)/(j^2))
+```
+
+
+#a character and factor vectors
+```{r}
+set.seed(123)
+w <- sample(c(0,1),1000, replace = TRUE)
+```
+```{r}
+w11 <- sample(c("No","Yes"),1000, replace = TRUE)
+```
+```{r}
+lb <- 1:5
+lb <- sapply(lb, function(x) rep(x,3))
+lb <- as.vector(lb)
+ch <- paste("q",lb,"s",1:3,sep = "", collapse = ", ")
+```
+
+
+```{r}
+#matrices
+a <- matrix(c(3,-3,-2,1,2,6,-2,1,3), nrow = 3, ncol = 3)
+
+b <- matrix(c(1,0,2,2,-2,1),2,3)
+
+  o <- 1:4
+c <- matrix(o,2,2, byrow = TRUE)
+  
+```
+
+
+

@@ -1,0 +1,70 @@
+---
+title: "Zadanie domowe 1"
+author: "Patryk Zając"
+output: html_notebook
+---
+Zadanie 1:
+
+```{r}
+
+v1 <- (1:20)
+
+v2 <- (20:1)
+
+v3 <- c(1:20,19:1)
+
+assign("tmp",c(7,8,1))
+
+v4 <- rep_len(c(4,6,3),3*10)
+
+v5 <- rep_len(c(4,6,3),9*3)
+v5 <- append(v5,c(4,6,4))
+
+v6 <- seq(3,6,0.1)
+v6 <- exp(v6)*cos(v6)
+
+v7 <- (rep(2,25) ** (1:25)) /(1:25)
+
+v8 <- seq(10,100,10)
+v8 <- sum(v8**3 + 4*v8**2)
+
+v9 <- (1:25)
+v9 <- sum((2**v9)/v9 + (3**v9)/(v9**2))
+
+```
+
+Zadanie 2:
+
+```{r}
+
+set.seed(123);v10 <- sample(c(0,1),1000,replace = TRUE)
+
+v11[v10==0] <- "NO"
+v11[v10==1] <- "TAK"
+
+v12 <- paste0("q",1:5)
+v12 <- paste0(rep(v12,each=3),"s",(1:3))
+
+```
+
+Zadanie 3:
+
+```{r}
+m1 <- matrix(c(3,1,-2,-3,2,1,-2,6,3),ncol = 3,nrow = 3)
+
+m2 <- matrix(c(1,2,-2,0,2,-1),ncol = 3,nrow = 2)
+
+m3 <- matrix(1:4,nrow = 2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
