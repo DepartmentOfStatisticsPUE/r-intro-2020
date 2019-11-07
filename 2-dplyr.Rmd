@@ -1,0 +1,145 @@
+---
+title: "Wprowadzenie do dplyr"
+author: "Maciej Beręsewicz"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+W pakiecie dplyr znajdują się następujące funkcje
+
+- select - wybieranie kolumn
+- filter - wybieranie wierszy
+- mutate - tworzenie nowych kolumn
+- arrange - sortowanie zbiorów 
+- summarize - tworzenie podsumowan
+- group_by - agregacja
+
+Funkcja select
+
+```{r}
+select(mtcars, am, mpg)
+select(mtcars, -am, -mpg)
+select(mtcars, 5, 6)
+select(mtcars, mpg:hp, -cyl)
+select(mtcars, starts_with("d"))
+select(mtcars, ends_with("p"))
+select(mtcars, mile = mpg)
+```
+
+Funkcja filter
+
+```{r}
+filter(mtcars, mpg > 10)
+filter(mtcars, mpg > 10 & cyl == 6)
+filter(mtcars, mpg > 10 , cyl == 6)
+filter(mtcars, mpg > 10 | mpg < 2)
+filter(mtcars, cyl == 6 | cyl == 8)
+filter(mtcars, cyl %in% c(6,8))
+filter(mtcars, between(cyl, 6, 8))
+filter(mtcars, mpg > mean(mpg))
+```
+
+Uczymy się wstawiania nowych kolumn
+
+```{r}
+mutate(mtcars, 
+       mpg_1000 = mpg/1000,
+       mpg_sqrt = sqrt(mpg_1000),
+       mpg_sr = mean(mpg))
+```
+
+Sortowanie zbiorów danych z wykorzystaniem funkcji arrange
+
+```{r}
+arrange(mtcars, mpg) ## rosnąco
+arrange(mtcars, -mpg) ## malejąco
+arrange(mtcars, desc(mpg)) ## malejąco
+arrange(mtcars, cyl, -mpg)
+```
+
+Podsumowujemy zbiór danych z funkcją summarize/summarise
+
+```{r}
+summarize(mtcars, 
+          mpg_total=sum(mpg),
+          liczba_obs = n())
+```
+
+```{r}
+summarize_if(mtcars, is.numeric, sum)
+summarize_if(mtcars, is.numeric, c(s=sum, m=mean))
+```
+
+```{r}
+summarize_at(mtcars, vars(mpg:disp), mean)
+```
+
+Podsumowanie w grupach
+
+```{r}
+summarize( group_by(mtcars, automated = am), m=mean(mpg))
+```
+
+
+h(g(f(x)))
+
+x -> f() -> g() -> h()
+
+
+```{r}
+mtcars %>%
+  filter(mpg > 10) %>%
+  mutate(mpg2 = mpg*1000) %>%
+  group_by(am) %>%
+  summarise(m = mean(mpg2))
+```
+
+```{r}
+summarise(
+  group_by(
+    filter(
+      mtcars, mpg > 10), 
+    am),
+  m = mean(mpg)
+)
+```
+
+x %>% f(arg5 = ., arg2, arg3, ...)
+
+```{r}
+1:10 %>% summary()
+seq(0,1,0.1) %>% quantile(x = 1:10, probs = . )
+```
+
+1. zapis wyniku do pliku
+
+```{r}
+mtcars %>%
+  filter(mpg > 10) %>%
+  mutate(mpg2 = mpg*1000) %>%
+  group_by(am) %>%
+  summarise(m = mean(mpg2)) %>%
+  write_csv(path = "results/wynik.csv")
+```
+
+2 <- , -> 
+
+```{r}
+mtcars %>%
+  filter(mpg > 10) %>%
+  mutate(mpg2 = mpg*1000) %>%
+  group_by(am) %>%
+  summarise(m = mean(mpg2)) -> wynik
+
+
+wynik <- mtcars %>%
+  filter(mpg > 10) %>%
+  mutate(mpg2 = mpg*1000) %>%
+  group_by(am) %>%
+  summarise(m = mean(mpg2))
+```
+

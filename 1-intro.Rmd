@@ -1,0 +1,31 @@
+---
+title: "Pierwszy notatnik"
+author: "Maciej Beręsewicz"
+output: html_notebook
+---
+
+Mój pierwszy notatnik, który zawiera wykresy, wzory i obliczenia w tekście.
+
+
+```{r}
+plot(cars)
+```
+
+
+$$
+x^2 + y^2 = z^2
+$$
+
+Ustalono, że wartość przeciętna wynosi `r 10+10`.
+
+
+```{r}
+head(cars)
+```
+
+ctrl + alt + i
+
+```{r}
+
+```
+
